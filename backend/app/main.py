@@ -50,6 +50,18 @@ async def create_blog(req: Item):
     return {"data":"Blog is created", "req":req} 
 
 
+@app.post("/blog2")
+async def create(title:str, desc: str):
+    return {"title":title, "desc":desc}
+
+class blog(BaseModel):
+    title: str
+    desc:str
+@app.post("/blog3")
+async def create(req: blog):
+    return req
+
+
 # if __name__ == "__main__":  # required if running via python 3 directly
 #     import uvicorn
 #     uvicorn.run(app, host="0.0.0.0", port=8080, reload=True)
